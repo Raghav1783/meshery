@@ -1,5 +1,7 @@
-name: MeshMap Screenshot Service
-'on':
+
+name: Meshery Snapshot Service
+on: # rebuild any PRs and main branch changes
+
   pull_request_target:
     types:
       - opened
@@ -38,7 +40,8 @@ jobs:
           path: action
           repository: layer5labs/meshmap-snapshot
       - id: test_result
-        uses: ${GITHUB_REF/refs/tags//}
+        uses: Raghav1783/kanvas-snapshot@master
+
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           mesheryToken: ${{ secrets.MESHERY_TOKEN }}

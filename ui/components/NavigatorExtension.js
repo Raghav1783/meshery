@@ -36,6 +36,9 @@ import { DryRunDesign } from './DesignLifeCycle/DryRun';
 import { DeployStepper, UnDeployStepper } from './DesignLifeCycle/DeployStepper';
 import { designValidationMachine } from 'machines/validator/designValidator';
 import Troubleshoot from './TroubleshootingComponent';
+import CAN from '@/utils/can';
+import { mesheryEventBus } from '@/utils/can';
+import { ThemeTogglerCore } from '@/themes/hooks';
 
 const requires = createRequires(getDependencies);
 const useRemoteComponent = createUseRemoteComponent({ requires });
@@ -129,7 +132,10 @@ function NavigatorExtension({
         DeployStepper,
         UnDeployStepper,
         designValidationMachine,
+        mesheryEventBus: mesheryEventBus,
+        ThemeTogglerCore,
         hooks: {
+          CAN: CAN,
           useFilterK8sContexts,
           useDynamicComponent,
         },
